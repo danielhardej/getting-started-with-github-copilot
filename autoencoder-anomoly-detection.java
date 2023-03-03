@@ -16,9 +16,14 @@ public class AnomolyDetection {
                 .nIn(784)
                 .nOut(1000)
                 .build())
+            .layer(1, new DenseLayer.Builder().nIn(1000).nOut(500).build())
+            .layer(2, new DenseLayer.Builder().nIn(500).nOut(250).build())
+            .layer(3, new DenseLayer.Builder().nIn(500).nOut(1000).build())
+            .pretrain(false).backprop(true)
+            .build();
 
         // Load the model
-        MultiLayerNetwork model = ModelSerializer.restoreMultiLayerNetwork("model.zip");
+        MultiLayerNetwork model = new MultiLayerNetwork(conf);
 
         // Load the data
         DataSetIterator testIter = new MnistDataSetIterator(1, false, 12345);
