@@ -1,4 +1,4 @@
-public class AnomolyDetection {
+public class AnomolyDetectionAutoencoder {
     public static void main(String[] args) throws Exception {
 
         // set up the network
